@@ -1,8 +1,16 @@
 import java.util.List;
 
 public abstract class Parker {
-    protected final int id;
-    protected final List<ParkingLot> parkingLots;
+    protected int id;
+    protected List<ParkingLot> parkingLots;
+
+    public int getId() {
+        return id;
+    }
+
+    public List<ParkingLot> getParkingLots() {
+        return parkingLots;
+    }
 
     public Parker(int id, List<ParkingLot> parkingLots) {
         this.id = id;
