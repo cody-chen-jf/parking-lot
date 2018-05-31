@@ -83,4 +83,28 @@ public class ParkingLotTest {
         assertThat(secondParkingLot.hasCar(carId)).isTrue();
     }
 
+    @Test
+    public void should_take_from_first_parking_lot() throws Exception {
+        Car car = new Car(1);
+
+        List<ParkingLot> parkingLots = new ArrayList<>();
+
+        ParkingLot firstParkingLot = new ParkingLot(1, 5);
+        parkingLots.add(firstParkingLot);
+
+        ParkingLot secondParkingLot = new ParkingLot(1, 15);
+        parkingLots.add(secondParkingLot);
+
+        SmartParkingBoy boy = new SmartParkingBoy(1, parkingLots);
+        int carId = boy.park(car);
+
+        assertThat(firstParkingLot.hasCar(carId)).isFalse();
+        assertThat(secondParkingLot.hasCar(carId)).isTrue();
+
+        int takenCarId = boy.take(carId);
+
+        assertThat(firstParkingLot.hasCar(carId)).isFalse();
+        assertThat(secondParkingLot.hasCar(carId)).isFalse();
+    }
+
 }

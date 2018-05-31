@@ -27,4 +27,15 @@ public class ParkingLot {
     public int getRemainSpace() {
         return size - cars.size();
     }
+
+    public int remove(int carId) {
+        Car removedCar = null;
+        for(Car car:cars){
+            if(car.getId() == carId){
+                removedCar = car;
+            }
+        }
+        cars.remove(removedCar);
+        return removedCar.getId();
+    }
 }

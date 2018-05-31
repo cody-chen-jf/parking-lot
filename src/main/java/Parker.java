@@ -10,4 +10,8 @@ public abstract class Parker {
     }
 
     public abstract int park(Car car);
+
+    public int take(int carId){
+        return parkingLots.stream().filter(parkingLot -> parkingLot.hasCar(carId)).findFirst().get().remove(carId);
+    }
 }
