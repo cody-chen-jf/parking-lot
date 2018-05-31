@@ -30,8 +30,8 @@ public class ParkingLot {
 
     public int remove(int carId) {
         Car removedCar = null;
-        for(Car car:cars){
-            if(car.getId() == carId){
+        for (Car car : cars) {
+            if (car.getId() == carId) {
                 removedCar = car;
             }
         }
@@ -39,8 +39,8 @@ public class ParkingLot {
         return removedCar.getId();
     }
 
-    public int getVacancyRate() {
-        return (size - cars.size())/cars.size();
+    public double getVacancyRate() {
+        return getRemainSpace() / cars.size();
     }
 
 }
