@@ -1,20 +1,16 @@
 import java.util.List;
 
-public class ParkingBoy {
-    private final int id;
-    private final List<ParkingLot> parkingLots;
-
+public class ParkingBoy extends Parker {
     public ParkingBoy(int id, List<ParkingLot> parkingLots) {
-        this.id = id;
-        this.parkingLots = parkingLots;
+        super(id, parkingLots);
     }
 
+    @Override
     public int park(Car car) {
-        for (ParkingLot parkingLot: parkingLots){
-            if(parkingLot.hasSpace()){
-                return parkingLot.store(car);
-            }
-        }
-        return -1;
+        return parkingLots.stream()
+                .filter(ParkingLot::hasSpace)
+                .findFirst()
+                .map(parkingLot -> parkingLot.store(car))
+                .orElse(-1);
     }
 }
