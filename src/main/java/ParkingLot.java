@@ -22,6 +22,9 @@ public class ParkingLot {
 
     public boolean hasSpace() {
         return size - cars.size() > 0;
+    }
 
+    public int getRemainSpace() {
+        return size - cars.size();
     }
 }
