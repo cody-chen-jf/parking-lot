@@ -7,7 +7,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ParkingLotTest {
     @Test
-    public void should_return_true_when_parking_given_1() throws Exception {
+    public void should_return_true_when_parking_in_the_first_parking_lot() throws Exception {
         Car car = new Car(1);
 
         List<ParkingLot> parkingLots = new ArrayList<>();
@@ -46,7 +46,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_false_when_out_of_first_parkingLot() throws Exception {
+    public void should_park_in_second_parkingLot_when_first_parkingLot_is_full() throws Exception {
         Car car1 = new Car(1);
         Car car2 = new Car(2);
 
@@ -65,7 +65,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_return_more_parking_lot() throws Exception {
+    public void should_parking_in_parking_lot_with_more_space() throws Exception {
         Car car = new Car(1);
 
         List<ParkingLot> parkingLots = new ArrayList<>();
@@ -84,7 +84,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    public void should_take_from_first_parking_lot() throws Exception {
+    public void should_take_from_first_parking_lot_when_taken_car() throws Exception {
         Car car = new Car(1);
 
         List<ParkingLot> parkingLots = new ArrayList<>();
@@ -103,12 +103,12 @@ public class ParkingLotTest {
 
         int takenCarId = boy.take(carId);
 
-        assertThat(firstParkingLot.hasCar(carId)).isFalse();
-        assertThat(secondParkingLot.hasCar(carId)).isFalse();
+        assertThat(firstParkingLot.hasCar(takenCarId)).isFalse();
+        assertThat(secondParkingLot.hasCar(takenCarId)).isFalse();
     }
 
     @Test
-    public void should_parking_in_high_empty_persent_parking_lot() throws Exception {
+    public void should_parking_in_high_vacancy_rate_parking_lot() throws Exception {
         Car car1 = new Car(1);
         Car car2 = new Car(2);
         Car car3 = new Car(3);
