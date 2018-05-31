@@ -38,4 +38,9 @@ public class ParkingLot {
         cars.remove(removedCar);
         return removedCar.getId();
     }
+
+    public int getVacancyRate() {
+        return (size - cars.size())/cars.size();
+    }
+
 }
